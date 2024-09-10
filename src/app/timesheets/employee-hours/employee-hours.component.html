@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Employee Hours</h2>
+    <div class="form-group mt-3">
+      <label for="weekEnding">Week Ending:</label>
+      <input type="date" class="form-control" id="weekEnding" [(ngModel)]="weekEnding" required>
+    </div>
+    <button class="btn btn-primary mt-3" (click)="getEmployeeHours()">Get Employee Hours</button>
+  </div>
+  
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Hours</h5>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Total Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let eh of employeeHours">
+                <td>{{ eh.employee }}</td>
+                <td>{{ eh.totalHours }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="shareByEmail()">Share by Email</button>
+        </div>
+      </div>
+    </div>
+  </div>

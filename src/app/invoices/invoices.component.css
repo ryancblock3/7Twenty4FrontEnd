@@ -1,0 +1,11 @@
+.card-header {
+    cursor: pointer;
+  }
+  
+  .card-header i {
+    transition: transform 0.3s;
+  }
+  
+  .fa-rotate-180 {
+    transform: rotate(180deg);
+  }

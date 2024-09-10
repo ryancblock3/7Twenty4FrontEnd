@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Job</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editJobForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="jobName">Job Name</label>
+        <input type="text" class="form-control" id="jobName" formControlName="jobName" required>
+      </div>
+      <div class="form-group">
+        <label for="jobNumber">Job Number</label>
+        <input type="text" class="form-control" id="jobNumber" formControlName="jobNumber" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel click')">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!editJobForm.valid">Save</button>
+      </div>
+    </form>
+  </div>

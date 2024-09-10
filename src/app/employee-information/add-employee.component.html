@@ -1,0 +1,72 @@
+<div class="container">
+    <h2 class="mt-4 mb-4">Add Employee</h2>
+    <div class="card">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employee.name" required>
+              </div>
+              <div class="form-group">
+                <label for="hireDate">Hire Date:</label>
+                <input type="date" class="form-control" id="hireDate" name="hireDate" [(ngModel)]="employee.hireDate" required>
+              </div>
+              <div class="form-group">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" class="form-control" id="jobTitle" name="jobTitle" [(ngModel)]="employee.jobTitle" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="employee.email" required>
+              </div>
+              <div class="form-group">
+                <label for="hourlyWage">Hourly Wage:</label>
+                <input type="number" class="form-control" id="hourlyWage" name="hourlyWage" [(ngModel)]="employee.hourlyWage" required>
+              </div>
+              <div class="form-group">
+                <label for="fica">FICA:</label>
+                <input type="number" class="form-control" id="fica" name="fica" [(ngModel)]="employee.fica" required>
+              </div>
+              <div class="form-group">
+                <label for="lastRaiseDate">Last Raise Date:</label>
+                <input type="date" class="form-control" id="lastRaiseDate" name="lastRaiseDate" [(ngModel)]="employee.lastRaiseDate">
+              </div>
+              <div class="form-group">
+                <label for="insurance">Insurance:</label>
+                <input type="number" class="form-control" id="insurance" name="insurance" [(ngModel)]="employee.insurance" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="vacationHoliday">Vacation/Holiday:</label>
+                <input type="number" class="form-control" id="vacationHoliday" name="vacationHoliday" [(ngModel)]="employee.vacationHoliday" required>
+              </div>
+              <div class="form-group">
+                <label for="carFuel">Car/Fuel:</label>
+                <input type="number" class="form-control" id="carFuel" name="carFuel" [(ngModel)]="employee.carFuel" required>
+              </div>
+              <div class="form-group">
+                <label for="markup">Markup:</label>
+                <input type="number" class="form-control" id="markup" name="markup" [(ngModel)]="employee.markup" required>
+              </div>
+              <div class="form-group">
+                <label for="lastVacationDate">Last Vacation Date:</label>
+                <input type="date" class="form-control" id="lastVacationDate" name="lastVacationDate" [(ngModel)]="employee.lastVacationDate">
+              </div>
+              <div class="form-group">
+                <label for="vacationDaysUsed">Vacation Days Used:</label>
+                <input type="number" class="form-control" id="vacationDaysUsed" name="vacationDaysUsed" [(ngModel)]="employee.vacationDaysUsed" required>
+              </div>
+              <div class="form-group">
+                <label for="notes">Notes:</label>
+                <textarea class="form-control" id="notes" name="notes" [(ngModel)]="employee.notes"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.form.valid">Create Employee</button>
+        </form>
+      </div>
+    </div>
+  </div>

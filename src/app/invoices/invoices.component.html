@@ -1,0 +1,64 @@
+<div class="container">
+  <h2 class="mb-4 mt-3">Invoices</h2>
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Search invoices..." [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()" />
+    </div>
+    <div class="col-md-6">
+      <input type="date" class="form-control" [(ngModel)]="weekEndingFilter" (ngModelChange)="filterByWeekEnding($event)" />
+    </div>
+  </div>
+  <div *ngFor="let invoice of filteredInvoices" class="card mb-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" (click)="invoice.isCollapsed = !invoice.isCollapsed">
+      <h5 class="mb-0">
+        {{ invoice.invoiceNumber }} | {{ invoice.job?.jobName }} | {{ invoice.weekEnding | date: 'MM-dd-yyyy' }}
+      </h5>
+      <i class="fas fa-chevron-down" [ngClass]="{ 'fa-rotate-180': !invoice.isCollapsed }"></i>
+    </div>
+    <div class="collapse" [ngClass]="{ 'show': !invoice.isCollapsed }">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>Job Name:</strong> {{ invoice.job?.jobName }}</p>
+            <p><strong>Job Number:</strong> {{ invoice.job?.jobNumber }}</p>
+            <p><strong>Week Ending:</strong> {{ invoice.weekEnding | date: 'MM-dd-yyyy' }}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Total Regular Hours:</strong> {{ invoice.totalRegularHours }}</p>
+            <p><strong>Total Overtime Hours:</strong> {{ invoice.totalOvertimeHours }}</p>
+            <p><strong>Total Amount:</strong> {{ invoice.totalAmount | currency }}</p>
+          </div>
+        </div>
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Regular Hours</th>
+              <th>Overtime Hours</th>
+              <th>Regular Cost</th>
+              <th>Overtime Cost</th>
+              <th>Total Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of invoice.invoiceEmployees">
+              <td>{{ employee.employeeName }}</td>
+              <td>{{ employee.regularHours }}</td>
+              <td>{{ employee.overtimeHours }}</td>
+              <td>{{ employee.regularCost | currency }}</td>
+              <td>{{ employee.overtimeCost | currency }}</td>
+              <td>{{ employee.totalCost | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-3 d-flex justify-content-end">
+          <button class="btn btn-primary mr-2" (click)="editInvoice(invoice)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteInvoice(invoice)">Delete</button>
+          <button class="btn btn-success" (click)="generatePDF(invoice)">Generate PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-delete-modal *ngIf="showDeleteModal" (modalClosed)="showDeleteModal = false"></app-delete-modal>

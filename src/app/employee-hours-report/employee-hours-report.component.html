@@ -1,0 +1,29 @@
+<div class="container">
+  <h2 class="mb-4 mt-3">Employee Hours Report</h2>
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <label for="weekEnding">Week Ending:</label>
+      <input type="date" class="form-control" id="weekEnding" [(ngModel)]="weekEnding" />
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary mt-4" (click)="generateReport()">Generate Report</button>
+    </div>
+  </div>
+  <div *ngIf="reportData">
+    <p>Report Generated On: {{ reportGeneratedAt | date: 'medium' }}</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Total Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of reportData" [ngClass]="{ 'table-warning': employee.totalHours < 24, 'table-danger': employee.totalHours > 50 }">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.totalHours }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

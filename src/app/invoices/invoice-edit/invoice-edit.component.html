@@ -1,0 +1,72 @@
+<div class="container">
+  <h2>Edit Invoice</h2>
+  <form *ngIf="invoice" (ngSubmit)="updateInvoice()">
+    <div class="form-group">
+      <label for="invoiceNumber">Invoice Number</label>
+      <input type="text" class="form-control" id="invoiceNumber" [(ngModel)]="invoice.invoiceNumber" name="invoiceNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="jobName">Job Name</label>
+      <input type="text" class="form-control" id="jobName" [(ngModel)]="jobName" name="jobName" required>
+    </div>
+    <div class="form-group">
+      <label for="jobNumber">Job Number</label>
+      <input type="text" class="form-control" id="jobNumber" [(ngModel)]="jobNumber" name="jobNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="weekEnding">Week Ending</label>
+      <input type="date" class="form-control" id="weekEnding" [(ngModel)]="invoice.weekEnding" name="weekEnding" required>
+    </div>
+    <div class="form-group">
+      <label for="totalRegularHours">Total Regular Hours</label>
+      <input type="number" class="form-control" id="totalRegularHours" [(ngModel)]="invoice.totalRegularHours" name="totalRegularHours" required>
+    </div>
+    <div class="form-group">
+      <label for="totalOvertimeHours">Total Overtime Hours</label>
+      <input type="number" class="form-control" id="totalOvertimeHours" [(ngModel)]="invoice.totalOvertimeHours" name="totalOvertimeHours" required>
+    </div>
+    <div class="form-group">
+      <label for="totalAmount">Total Amount</label>
+      <input type="number" class="form-control" id="totalAmount" [(ngModel)]="invoice.totalAmount" name="totalAmount" required>
+    </div>
+    <h4>Invoice Employees</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Regular Hours</th>
+          <th>Overtime Hours</th>
+          <th>Regular Cost</th>
+          <th>Overtime Cost</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of invoice.invoiceEmployees; let i = index">
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="employee.employeeName" [name]="'employeeName' + i" required>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="employee.regularHours" [name]="'regularHours' + i" required>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="employee.overtimeHours" [name]="'overtimeHours' + i" required>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="employee.regularCost" [name]="'regularCost' + i" required>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="employee.overtimeCost" [name]="'overtimeCost' + i" required>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="employee.totalCost" [name]="'totalCost' + i" required>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-secondary ml-2" (click)="navigateToInvoices()">Cancel</button>
+    </div>
+  </form>
+</div>

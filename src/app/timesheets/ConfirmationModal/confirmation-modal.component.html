@@ -1,0 +1,13 @@
+<!-- confirmation-modal.component.html -->
+
+<div class="modal-header">
+    <h4 class="modal-title">Confirmation</h4>
+    <button type="button" class="close" (click)="activeModal.dismiss()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <p>An invoice already exists for this timesheet. Do you want to overwrite it?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirm()">Yes</button>
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">No</button>
+  </div>
