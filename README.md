@@ -5,8 +5,7 @@
 
 ## Project Structure
 
-### Backend (Spring Boot)
-The backend is located in the `7Twenty4 - Back End` directory and includes:
+### Backend (Spring Boot) - https://github.com/ryancblock3/7Twenty4Backend
 - Controllers for handling API requests
 - Entity classes representing the data model
 - Repositories for database interactions
@@ -18,8 +17,7 @@ Key components:
 - `JobController`: Manages job-related operations
 - `TimesheetController`: Handles timesheet entries
 
-### Frontend (Angular)
-The frontend is located in the `7Twenty4 - Front End` directory and includes:
+### Frontend (Angular) - https://github.com/ryancblock3/7Twenty4FrontEnd
 - Components for different views (employees, timesheets, invoices, jobs)
 - Services for API communication
 - Models for data representation
